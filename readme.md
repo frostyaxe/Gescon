@@ -320,6 +320,9 @@ git checkout -b feature/new-gesture
 
 ---
 
+# Open Issues
+![GitHub issues](https://img.shields.io/github/issues/frostyaxe/Gescon)
+
 # License
 
 MIT License
