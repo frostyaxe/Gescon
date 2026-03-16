@@ -1,0 +1,61 @@
+# -------------------- Scroll --------------------
+scroll:
+  enabled: true
+  speed: 20
+  interval: 0.07
+  fingers_to_enable: 3
+  fingers_to_disable: 4   # kept for compatibility / future use
+  cooldown: 2.0           # seconds between scroll mode toggles
+
+# -------------------- Blink Screenshot --------------------
+blink:
+  enabled: true
+  threshold: 0.01
+  blinks_required: 3
+
+# -------------------- Voice Command --------------------
+voice:
+  enabled: false
+  wake_word: "hey bro"
+  wake_word_timeout: 5    # seconds to listen for command after wake word
+  commands:
+    - phrase: ["open gmail please", "please help me to check emails", "show email"]
+      action: "open_gmail"
+    - phrase_prefix: "search "
+      action: "search_page"
+
+# -------------------- Camera --------------------
+camera:
+  width: 640
+  height: 480
+  index: 0                # camera index (0 = default webcam)
+
+# -------------------- Hand / Gestures --------------------
+hand:
+  click_cooldown: 0.4     # seconds between allowed click gestures
+  click_gesture: pinch    # "pinch" = thumb+index tips together (reliable); "fingers" = thumb+index up, others down
+  pinch_threshold: 0.09   # lower = fingers must be closer to click (try 0.09 if pinch not detected)
+  click_stability_frames: 2  # require gesture for N frames before click (2 = more stable)
+
+# -------------------- Pointer Mode --------------------
+# Show five fingers to enable; move cursor with index + middle finger tips; five fingers again to disable
+# When pointer is off, only scroll can be activated (3 fingers), and vice versa.
+pointer:
+  enabled: true
+  toggle_cooldown: 1.0    # seconds between toggles
+  smoothing: 0.1           # 0=instant, higher=smoother but laggier
+  reach: 0.5               # middle 50% of hand movement = full screen (cross in one go)
+  sensitivity: 1.4        # >1 = more cursor travel per hand move
+  dead_zone: 0.015        # ignore tiny movements so cursor doesn't drift (increase if still jittery)
+
+# -------------------- Zoom Mode --------------------
+# Enable/disable zoom mode with a "triple both-hand pinch":
+# - Make a pinch with BOTH hands (thumb + index together) three times within a short duration.
+# - While zoom mode is ON, move the two pinched hands apart to zoom IN, together to zoom OUT.
+zoom:
+  enabled: true
+  activation_pinch_count: 3
+  activation_window: 3.0
+  distance_threshold: 0.01
+  stability_frames: 2
+  zoom_cooldown: 0.3
