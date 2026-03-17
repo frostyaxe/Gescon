@@ -1,3 +1,4 @@
+
 import logging
 import sys
 import time
@@ -705,7 +706,7 @@ def run_loop(cfg: AppConfig, log_window: LogWindow) -> None:
 
 
                # ---------- Zoom Mode (single-hand pinch activation + depth zoom control) ----------
-                if cfg.zoom.enabled and hand is not None and not locked and (not state.pointer_mode):
+                if cfg.zoom.enabled and hand is not None and not locked and (not state.pointer_mode) and (not state.scroll_mode):
 
                     pinching = pinch_distance(hand) < cfg.hand.pinch_threshold
 
@@ -814,7 +815,7 @@ def run_loop(cfg: AppConfig, log_window: LogWindow) -> None:
                         state.last_scroll_action = now
 
                 # ---------- Click Gesture (one-hand only; disabled when 2 hands visible or zoom mode on) ----------
-                if (not state.pointer_mode) and (not state.scroll_mode) and (not two_hands_visible) and (not state.zoom_mode) and (not locked):
+                if (state.pointer_mode) and (not state.scroll_mode) and (not two_hands_visible) and (not state.zoom_mode) and (not locked):
                     if cfg.hand.click_gesture == "pinch":
                         # Pinch: thumb tip near index tip (more reliable than finger-up)
                         click_gesture = pinch_distance(hand) < cfg.hand.pinch_threshold
